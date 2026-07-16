@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+.env
+*.egg-info/
+dist/
+build/
+
+# MIMIC credentialed data — never commit
+data/raw/mimic*/
+data/raw/*.csv.gz
+data/raw/*.csv
+!data/raw/.gitkeep
+
+# Keep the small demo model so clone → app.py works offline after train
+# (re-train anytime with scripts/train_baseline.py)
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/demo_metrics.json
+
+# Notebooks checkpoints
+notebooks/.ipynb_checkpoints/
