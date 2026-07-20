@@ -20,7 +20,7 @@ class DiscriminationReport:
 def compute_discrimination(y_true: np.ndarray, y_prob: np.ndarray) -> DiscriminationReport:
     """
     AUROC = ranking quality (can the model order higher-risk above lower-risk?).
-    PR-AUC = better under class imbalance — always report both for mortality.
+    PR-AUC = better under class imbalance, always report both for mortality.
     """
     auroc = float(roc_auc_score(y_true, y_prob))
     pr_auc = float(average_precision_score(y_true, y_prob))

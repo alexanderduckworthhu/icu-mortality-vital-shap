@@ -15,7 +15,7 @@ tutorial literature. MIMIC-IV is a fine upgrade later; keep one version in v1.
 
 3. **Sign the Data Use Agreement (DUA)** for MIMIC-III  
    Request access to the MIMIC-III Clinical Database on PhysioNet and sign
-   the DUA. Approval is not instant — plan days to a couple of weeks.
+   the DUA. Approval is not instant, plan days to a couple of weeks.
 
 4. **Never commit credentialed files**  
    This repo gitignores `data/raw/*.csv`. Keep extracts local or on an
@@ -93,6 +93,6 @@ Then reuse `src/preprocess/` unchanged.
 ## Legal / ethics reminder
 
 MIMIC is de-identified but still protected under the DUA. Portfolio blogs may
-describe methods and **aggregate** metrics only — not individual stays from
+describe methods and **aggregate** metrics only, not individual stays from
 the real database. Keep using synthetic stays in the public Gradio demo unless
 your deployment is access-controlled and DUA-compliant.

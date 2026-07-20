@@ -1,7 +1,7 @@
 # Portfolio writeup frame (clinically thoughtful)
 
 Use this structure for LinkedIn project posts, CV bullets, and case-study PDFs.
-Tone: calm, specific, ethically awake — not “I built an AI that predicts death.”
+Tone: calm, specific, ethically awake, not “I built an AI that predicts death.”
 
 ## Headline options
 

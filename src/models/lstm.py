@@ -1,5 +1,5 @@
 """
-LSTM placeholder — intentionally not the default path.
+LSTM placeholder, intentionally not the default path.
 
 Use this module only after the baseline is reported and you have evidence that
 temporal order (beyond window aggregates) improves AUROC / calibration on a

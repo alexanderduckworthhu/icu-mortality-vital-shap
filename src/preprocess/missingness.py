@@ -80,7 +80,7 @@ def final_impute_median(
 
     WHY median (not mean): vital distributions are skewed; mean chases outliers.
     WHY not interpolate across long gaps: invents a smooth trajectory the nurse
-    never charted — dangerous for a mortality story.
+    never charted, dangerous for a mortality story.
     """
     vital_cols = vital_cols or VITAL_COLUMNS
     out = df.copy()

@@ -328,7 +328,7 @@ def stay_id_from_choice(choice: str) -> str:
     """Parse stay_id from 'demo-0003 · …' or legacy dashed labels."""
     if not choice:
         raise ValueError("empty stay choice")
-    for separator in (" · ", " — ", " - ", "  ("):
+    for separator in (" · ", ", ", " - ", "  ("):
         if separator in choice:
             return choice.split(separator)[0].strip()
     return choice.split("(")[0].strip()

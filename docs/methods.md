@@ -62,17 +62,17 @@ hidden state.
 **Start with the baseline.** Promote LSTM only when the checklist in
 `src/models/lstm.py` is honestly true.
 
-Implementation: `src/models/baseline.py` — `StandardScaler` → L2 logistic with
+Implementation: `src/models/baseline.py`, `StandardScaler` → L2 logistic with
 `class_weight='balanced'` → `CalibratedClassifierCV(method='isotonic')`.
 
 ## SHAP time-window attribution
 
 1. KernelSHAP on the engineered feature vector (works with calibration wrapper).  
 2. Aggregate feature SHAP values onto a **vital × window** matrix.  
-3. Plot heatmap (`src/explain/plots.py`) — red raises predicted risk, blue lowers.
+3. Plot heatmap (`src/explain/plots.py`), red raises predicted risk, blue lowers.
 
 Example reading: strong positive SHAP on `spo2_mean_6h` and `spo2_slope_6h`
-means the model’s elevated score was driven by recent oxygenation pattern —
+means the model’s elevated score was driven by recent oxygenation pattern , 
 a clinician can then look at the trajectory panel and accept or reject that
 emphasis.
 
@@ -85,7 +85,7 @@ a causal claim that SpO₂ “caused” death.
 
 - **AUROC:** ranking quality. For vital-only short-horizon ICU mortality,
   published results vary by cohort; treat **~0.75–0.85** as a rough
-  orientation band for a serious vital-sign baseline — not a pass/fail grade.
+  orientation band for a serious vital-sign baseline, not a pass/fail grade.
 - **PR-AUC:** always report under class imbalance; a high AUROC can coexist
   with weak precision at useful operating points.
 
@@ -106,12 +106,12 @@ a causal claim that SpO₂ “caused” death.
 | Sample size + positive rate | Context for both |
 | Subgroup or era check (CareVue vs Metavision) if sample allows | Drift honesty |
 
-Demo metrics in `data/processed/demo_metrics.json` are **synthetic** — label
+Demo metrics in `data/processed/demo_metrics.json` are **synthetic**, label
 them as such until MIMIC results exist.
 
 ## Evaluation hygiene
 
-- Split by **patient** (`SUBJECT_ID`), not row, when using MIMIC — prevents
+- Split by **patient** (`SUBJECT_ID`), not row, when using MIMIC, prevents
   leakage across stays.
 - Fix seed (`RANDOM_SEED`).
 - Do not tune on the final test set; use a validation split or CV for

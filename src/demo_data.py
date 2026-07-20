@@ -35,7 +35,7 @@ def _simulate_stay(rng: np.random.Generator, high_risk: bool) -> pd.DataFrame:
     temp = 36.8 + rng.normal(0, 0.2, hours)
 
     if high_risk:
-        # Progressive late-window deterioration — what SHAP should surface.
+        # Progressive late-window deterioration, what SHAP should surface.
         # Strength + label noise keep demo AUROC in a believable band (not 1.0).
         strength = float(rng.uniform(0.35, 0.85))
         ramp = np.clip((t - 28) / 20.0, 0, 1) * strength

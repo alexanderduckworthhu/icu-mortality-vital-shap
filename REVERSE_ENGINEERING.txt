@@ -1,11 +1,11 @@
 ================================================================================
-ICU MORTALITY · VITALS + SHAP — REVERSE ENGINEERING GUIDE
+ICU MORTALITY · VITALS + SHAP: REVERSE ENGINEERING GUIDE
 ================================================================================
 Purpose: Teach yourself how this portfolio project works by walking backward
 from the Gradio risk screen to raw vital-sign rows. Read with the code open.
 
 Audience: You (career-changer / INFJ who needs the WHY). Not for hiring managers
-— they get the README and docs/talking_points.md.
+,  they get the README and docs/talking_points.md.
 
 Sibling projects: where-needs-overlap and multilingual-rag-assistant are
 SEPARATE repos under Portfolio/. Do not mix their pipelines, data, or apps.
@@ -17,7 +17,7 @@ SEPARATE repos under Portfolio/. Do not mix their pipelines, data, or apps.
 Question the whole app answers:
 
   "Given 48 hours of ICU vital signs, what is a calibrated estimate of
-   48-hour mortality risk — and which vital-sign windows drove that estimate?"
+   48-hour mortality risk, and which vital-sign windows drove that estimate?"
 
 If a feature does not improve honest risk estimation, attribution, calibration,
 or uncertainty communication, it does not belong. That filter stops INFJ
@@ -70,11 +70,11 @@ Mental model:
   MODEL     = "calibrated probability, not a hard label"
   EXPLAIN   = "which windows pushed the score"
   FRAME     = "how to say the number without pretending certainty"
-  DEMO      = "thin UI over the above — no logic living only in Gradio"
+  DEMO      = "thin UI over the above, no logic living only in Gradio"
 
 
 --------------------------------------------------------------------------------
-3. FILE MAP — WHAT EACH FILE OWNS
+3. FILE MAP. WHAT EACH FILE OWNS
 --------------------------------------------------------------------------------
 
 src/config.py
@@ -107,7 +107,7 @@ src/explain/plots.py
 
 src/metrics/discrimination.py / calibration.py
   - AUROC, PR-AUC, ECE, reliability curve points
-  - Calibration is an ethics metric here — reverse-engineer that sentence
+  - Calibration is an ethics metric here, reverse-engineer that sentence
 
 src/styles.py
   - Design tokens + 4px spacing scale + teal Soft theme; fade-up / pulse motion
@@ -124,12 +124,12 @@ app.py
   - Reset restores the default example; errors switch the primary button to Try again
   - Lazy-trains if model missing so clone → run still works
 
-docs/mimic_access.md     — PhysioNet + tables/columns
-docs/methods.md          — preprocess, model rationale, “what good looks like”
-docs/ethics_uncertainty.md — the INFJ differentiator for interviews
-docs/portfolio_writeup.md  — how to describe this without cringe
-docs/talking_points.md     — 90-second oral version
-docs/limitations.md        — intellectual honesty
+docs/mimic_access.md    . PhysioNet + tables/columns
+docs/methods.md         , preprocess, model rationale, “what good looks like”
+docs/ethics_uncertainty.md, the INFJ differentiator for interviews
+docs/portfolio_writeup.md , how to describe this without cringe
+docs/talking_points.md    , 90-second oral version
+docs/limitations.md       , intellectual honesty
 
 
 --------------------------------------------------------------------------------
@@ -144,7 +144,7 @@ After train_baseline, conceptually you have rows like:
 Each column is a story you can tell a clinician. If you cannot say the story,
 delete the column.
 
-SHAP heatmap columns are 6h / 24h / 48h — the same windows. That alignment is
+SHAP heatmap columns are 6h / 24h / 48h, the same windows. That alignment is
 deliberate: explanation language matches feature language.
 
 
@@ -153,7 +153,7 @@ deliberate: explanation language matches feature language.
 --------------------------------------------------------------------------------
 A. Break plausibility
    Set a demo SpO2 to 0 before cleaning; confirm it becomes NaN and raises
-   miss flags — not a "zero oxygen" feature.
+   miss flags, not a "zero oxygen" feature.
 
 B. Swap model off
    Temporarily skip calibration in train_baseline; compare ECE. Use the
@@ -161,7 +161,7 @@ B. Swap model off
 
 C. Read one SHAP row aloud
    Pick top_drivers from a high-risk stay. Say: "The model increased risk
-   because of X window — that may or may not match physiology; here's the
+   because of X window, that may or may not match physiology; here's the
    trajectory so you can judge."
 
 D. LSTM temptation test
@@ -170,7 +170,7 @@ D. LSTM temptation test
 
 E. Ethics read-through
    Click a high-risk demo stay. If the UI feels like a death sentence, the
-   copy failed — fix framing.py, not the model.
+   copy failed, fix framing.py, not the model.
 
 
 --------------------------------------------------------------------------------
@@ -204,7 +204,7 @@ DUA-compliant and access-controlled.
 8. IF YOU GET LOST
 --------------------------------------------------------------------------------
 Return to section 1. The product is not "an LSTM on MIMIC." The product is a
-careful mortality *estimate* with window attribution and humble language —
+careful mortality *estimate* with window attribution and humble language , 
 built with tools an entry-level clinical data scientist actually uses.
 
 ================================================================================

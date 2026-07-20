@@ -88,13 +88,13 @@ def test_stay_id_from_choice():
 def test_i18n_has_no_forbidden_filler():
     from src.i18n import COPY
 
-    banned = ("simply", " just ", "easy", "feel free", "this project demonstrates", " — ")
+    banned = ("simply", " just ", "easy", "feel free", "this project demonstrates", ", ")
     for lang, strings in COPY.items():
         blob = " ".join(strings.values()).lower()
         for word in banned:
             assert word not in blob, f"{lang} still contains {word!r}"
         for key, value in strings.items():
-            assert "—" not in value, f"{lang}.{key} still uses an em dash"
+            assert ", " not in value, f"{lang}.{key} still uses an em dash"
 
 
 def test_german_italian_and_mandarin_copy():

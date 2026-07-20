@@ -19,14 +19,14 @@ ASSETS_DIR = PROJECT_ROOT / "assets"
 
 # --- Prediction task ---------------------------------------------------------
 # WHY 48h: short enough for vital-sign dynamics to matter; long enough for a
-# "next two days" risk conversation — not code-blue prediction or 30-day mortality.
+# "next two days" risk conversation, not code-blue prediction or 30-day mortality.
 HORIZON_HOURS = 48
 SEQUENCE_HOURS = 48
 RESAMPLE_FREQ = "1h"
 
 # --- Vitals ------------------------------------------------------------------
 # WHY these six: universally charted, continuous, clinician-readable.
-# Labs / notes / interventions are v2 — they explode missingness and scope.
+# Labs / notes / interventions are v2, they explode missingness and scope.
 VITAL_COLUMNS = [
     "heart_rate",
     "sys_bp",
@@ -36,14 +36,14 @@ VITAL_COLUMNS = [
     "temperature_c",
 ]
 
-# MIMIC-III Metavision / CareVue itemids — verify against D_ITEMS on your extract.
+# MIMIC-III Metavision / CareVue itemids, verify against D_ITEMS on your extract.
 MIMIC_ITEMIDS: dict[str, list[int]] = {
     "heart_rate": [211, 220045],
     "sys_bp": [51, 442, 455, 6701, 220050, 220179],
     "dias_bp": [8368, 8440, 8441, 8555, 220051, 220180],
     "resp_rate": [618, 615, 220210, 224690],
     "spo2": [646, 220277],
-    "temperature_c": [223761, 678],  # CareVue 678 is often °F — convert in ETL
+    "temperature_c": [223761, 678],  # CareVue 678 is often °F, convert in ETL
 }
 
 # Values outside these ranges become NaN (not clipped) before imputation.
