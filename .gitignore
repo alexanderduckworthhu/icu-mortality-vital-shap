@@ -10,17 +10,23 @@ __pycache__/
 dist/
 build/
 
-# MIMIC credentialed data — never commit
+# MIMIC credentialed data - never commit
 data/raw/mimic*/
 data/raw/*.csv.gz
 data/raw/*.csv
 !data/raw/.gitkeep
 
-# Keep the small demo model so clone → app.py works offline after train
-# (re-train anytime with scripts/train_baseline.py)
+# Regenerated / bulky processed outputs (ignore by default)
 data/processed/*
 !data/processed/.gitkeep
 !data/processed/demo_metrics.json
+
+# Pre-built Streamlit Cloud demo artifacts (must be committed so cold
+# starts do not retrain). Explicit keep rules in case broader ignores
+# are added later (e.g. *.joblib, data/, data/sample/, data/models/).
+!data/sample/demo_vitals_long.csv
+!data/sample/demo_labels.csv
+!data/models/baseline_mortality.joblib
 
 # Notebooks checkpoints
 notebooks/.ipynb_checkpoints/

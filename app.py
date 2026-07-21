@@ -70,22 +70,23 @@ st.set_page_config(
 
 
 def _ensure_artifacts() -> None:
-    """Create demo CSV and trained model artifacts if they are missing."""
-    try:
-        if not (SAMPLE_DIR / "demo_vitals_long.csv").exists():
-            save_demo_sample(SAMPLE_DIR)
-        if not MODEL_PATH.exists():
-            from scripts.train_baseline import main as train_main
-
-            train_main()
-    except (OSError, ValueError, ImportError) as exc:
-        logger.exception("Failed to prepare demo artifacts")
+    """
+    Verify pre-built demo artifacts exist on disk.
+    Never trains at runtime — artifacts must be committed
+    to the repository so Streamlit Cloud can load them
+    directly on cold start.
+    """
+    missing: list[str] = []
+    if not (SAMPLE_DIR / "demo_vitals_long.csv").exists():
+        missing.append(str(SAMPLE_DIR / "demo_vitals_long.csv"))
+    if not MODEL_PATH.exists():
+        missing.append(str(MODEL_PATH))
+    if missing:
         raise RuntimeError(
-            "Could not prepare demo data or model. "
-            "Run `python -m scripts.build_demo_data` then "
-            "`python -m scripts.train_baseline`."
-        ) from exc
-
+            f"Demo artifacts missing from disk: {missing}. "
+            "Run scripts.build_demo_data then scripts.train_baseline "
+            "locally and commit all outputs before deploying."
+        )
 
 @st.cache_resource(show_spinner=False)
 def _load_bundle() -> DemoBundle:

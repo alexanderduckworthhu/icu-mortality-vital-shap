@@ -5,5 +5,6 @@
   "auroc": 1.0,
   "pr_auc": 1.0,
   "ece": 0.0,
-  "note": "Metrics are on SYNTHETIC demo data (can look near-ceiling by construction). Replace with MIMIC-III held-out patient-level results after PhysioNet credentialing \u2014 expect AUROC roughly in the 0.75\u20130.85 orientation band for vital-only baselines."
+  "cohort": "synthetic_demo",
+  "note": "SYNTHETIC demo metrics (may sit near ceiling by construction). After PhysioNet credentialing, report MIMIC-III patient-level held-out AUROC in the 0.75\u20130.85 orientation band for vitals-only baselines."
 }
