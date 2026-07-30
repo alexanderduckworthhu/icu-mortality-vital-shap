@@ -388,7 +388,7 @@ def inject_styles() -> None:
 :root {{
   --primary-color: #0d3d28;
   --background-color: #ffffff;
-  --secondary-background-color: #ffffff;
+  --secondary-background-color: #e8f2ec;
   --text-color: #0a0a0a;
 }}
 
@@ -516,26 +516,37 @@ button[kind="secondary"],
 }}
 .icu-chip {{ background: #e8f2ec !important; color: #0d3d28 !important; }}
 
-/* Demo-patient select: readable text + visible border (avoid white-on-white) */
-div[data-testid="stSelectbox"] label p {{
+/* Demo-patient select: distinct fill + dark value text (closed state) */
+div[data-testid="stSelectbox"] label p,
+div[data-testid="stSelectbox"] [data-testid="stWidgetLabel"] p {{
   color: #0a0a0a !important;
   font-weight: 600 !important;
 }}
-div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
-  background-color: #ffffff !important;
+div[data-testid="stSelectbox"] > div {{
+  background-color: transparent !important;
+}}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
+  background-color: #e8f2ec !important;
+}}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div > div {{
+  background-color: #e8f2ec !important;
   border: 1.5px solid #0d3d28 !important;
   border-radius: 8px !important;
   color: #0a0a0a !important;
   min-height: 44px !important;
   box-shadow: none !important;
 }}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] * {{
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+}}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] svg {{
+  fill: #0d3d28 !important;
+  color: #0d3d28 !important;
+}}
 div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover {{
   border-color: #1a5c3a !important;
-}}
-div[data-testid="stSelectbox"] div[data-baseweb="select"] span,
-div[data-testid="stSelectbox"] div[data-baseweb="select"] svg {{
-  color: #0a0a0a !important;
-  fill: #0a0a0a !important;
 }}
 ul[role="listbox"],
 div[data-baseweb="popover"] ul,
@@ -544,12 +555,14 @@ div[data-baseweb="menu"] {{
   border: 1px solid #d0d0d0 !important;
 }}
 ul[role="listbox"] li,
-div[data-baseweb="menu"] li {{
+div[data-baseweb="menu"] li,
+li[role="option"] {{
   background-color: #ffffff !important;
   color: #0a0a0a !important;
 }}
 ul[role="listbox"] li:hover,
-div[data-baseweb="menu"] li:hover {{
+div[data-baseweb="menu"] li:hover,
+li[role="option"]:hover {{
   background-color: #e8f2ec !important;
 }}
 
