@@ -37,7 +37,7 @@ missingness honesty, and how the number should be spoken aloud.
   calibration floor with stable tabular SHAP.
 - **Explain: KernelSHAP → vital × window heatmap**, considered coefficient plots
   alone; SHAP survives the calibration wrapper and maps to clinician language.
-- **UI: Streamlit sidebar (EN/FR/DE/IT/ZH/PT/RU via `src/i18n.py`)**, same language-switcher pattern as Where Needs Overlap.
+- **UI: Streamlit sidebar (EN/FR/DE/IT/PT/ES/AR/ZH/RU via `src/i18n.py`)**, same language-switcher pattern as Where Needs Overlap.
 - **Public demo on synthetic stays**. MIMIC rows stay off public UIs until hosting
   is DUA-compliant.
 

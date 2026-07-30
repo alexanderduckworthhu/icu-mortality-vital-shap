@@ -34,7 +34,7 @@ from src.explain.plots import plot_shap_heatmap, plot_vital_trajectory
 from src.explain.shap_timestep import explain_instance
 from src.i18n import LANGUAGE_LABELS, SUPPORTED_LANGS, normalize_lang, t
 from src.models.baseline import TrainedBaseline, load_model
-from src.styles import inject_styles
+from src.styles import apply_direction, inject_styles
 from src.ui_format import (
     curate_stay_choices,
     default_curated_choice,
@@ -164,6 +164,7 @@ def _estimate_for_stay(stay_choice: str, lang_key: str) -> dict[str, Any]:
     }
 
 
+initial_lang = normalize_lang(st.session_state.get("ui_lang", "en"))
 inject_styles()
 
 # Drop stale chart HTML from before the latest color/CSS pass.
@@ -174,15 +175,16 @@ if st.session_state.get("ui_style_version") != UI_STYLE_VERSION:
 
 # --- Sidebar (same pattern as Where Needs Overlap) ---
 with st.sidebar:
-    st.markdown("### Language")
+    st.markdown(f"### {t('lang', initial_lang)}")
     lang = st.selectbox(
-        "Language",
+        t("lang", initial_lang),
         options=list(SUPPORTED_LANGS),
         format_func=lambda code: LANGUAGE_LABELS.get(code, code),
         key="ui_lang",
         label_visibility="collapsed",
     )
     lang = normalize_lang(lang)
+    apply_direction(lang)
     st.caption(t("sidebar_hint", lang))
     st.markdown(t("sidebar_guide", lang))
     st.markdown("---")

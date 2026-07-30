@@ -515,11 +515,74 @@ button[kind="secondary"],
   margin: 0 0 12px 0;
 }}
 .icu-chip {{ background: #e8f2ec !important; color: #0d3d28 !important; }}
+
+/* Arabic RTL: mirror text flow and list/legend indents; charts stay LTR images */
+html[dir="rtl"] body,
+html[dir="rtl"] .stApp,
+html[dir="rtl"] .block-container {{
+  direction: rtl;
+  text-align: right;
+}}
+html[dir="rtl"] section[data-testid="stSidebar"],
+html[dir="rtl"] [data-testid="stSidebarContent"] {{
+  text-align: right;
+}}
+html[dir="rtl"] .stMarkdown p,
+html[dir="rtl"] .stMarkdown li,
+html[dir="rtl"] [data-testid="stMarkdownContainer"] p,
+html[dir="rtl"] [data-testid="stMarkdownContainer"] li,
+html[dir="rtl"] [data-testid="stCaptionContainer"],
+html[dir="rtl"] label {{
+  text-align: right;
+}}
+html[dir="rtl"] .icu-driver-list,
+html[dir="rtl"] [data-testid="stMarkdownContainer"] ul,
+html[dir="rtl"] [data-testid="stMarkdownContainer"] ol {{
+  padding-right: 18px;
+  padding-left: 0;
+}}
+html[dir="rtl"] .icu-eyebrow,
+html[dir="rtl"] .icu-title,
+html[dir="rtl"] .icu-lede,
+html[dir="rtl"] .icu-what,
+html[dir="rtl"] .icu-disclaimer,
+html[dir="rtl"] .icu-status,
+html[dir="rtl"] .icu-risk-pct,
+html[dir="rtl"] .icu-risk-band,
+html[dir="rtl"] .icu-risk-explain {{
+  text-align: right;
+}}
 """
     try:
         st.html(f"<style>{css}</style>")
     except Exception:
         st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+
+
+def apply_direction(lang: str) -> None:
+    """Set the document `dir`/`lang` attributes so Arabic renders right-to-left.
+
+    Runs inside a zero-size embedded iframe and reaches into the parent
+    document, since Streamlit's own DOM has no attribute hook for this.
+    """
+    import streamlit.components.v1 as components
+
+    direction = "rtl" if lang == "ar" else "ltr"
+    components.html(
+        f"""
+        <script>
+        (function() {{
+          try {{
+            const doc = window.parent.document;
+            doc.documentElement.setAttribute('dir', '{direction}');
+            doc.documentElement.setAttribute('lang', '{lang}');
+          }} catch (e) {{}}
+        }})();
+        </script>
+        """,
+        height=0,
+        width=0,
+    )
 
 
 def theme():

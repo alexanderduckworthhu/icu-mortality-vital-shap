@@ -1,16 +1,18 @@
-"""EN / FR / DE / IT / ZH / PT / RU micro-copy for the Gradio demo."""
+"""EN / FR / DE / IT / PT / ES / AR / ZH / RU micro-copy for the Gradio demo."""
 
 from __future__ import annotations
 
-SUPPORTED_LANGS = ("en", "fr", "de", "it", "zh", "pt", "ru")
+SUPPORTED_LANGS = ("en", "fr", "de", "it", "pt", "es", "ar", "zh", "ru")
 
 LANGUAGE_LABELS: dict[str, str] = {
     "en": "English",
     "fr": "Français",
     "de": "Deutsch",
     "it": "Italiano",
-    "zh": "中文",
     "pt": "Português",
+    "es": "Español",
+    "ar": "العربية",
+    "zh": "中文",
     "ru": "Русский",
 }
 
@@ -506,6 +508,254 @@ COPY: dict[str, dict[str, str]] = {
             "La spiegazione del modello (SHAP) descrive il calcolo, non la causa biologica."
         ),
     },
+    "es": {
+        "eyebrow": "Demo de portafolio para roles de ciencia de datos clínica",
+        "title": "¿Sobrevivirá este paciente de UCI las próximas 48 horas?",
+        "subtitle": (
+            "Esta herramienta estima esa probabilidad a partir de la frecuencia "
+            "cardiaca, la presión arterial, la frecuencia respiratoria, el nivel "
+            "de oxígeno y la temperatura de los últimos dos días."
+        ),
+        "what_it_shows": (
+            "<strong>Qué obtiene:</strong> un porcentaje de riesgo y luego una lista "
+            "breve de qué signos vitales y ventanas de tiempo influyeron más en la "
+            "puntuación. Úselo para hacer mejores preguntas, no para decidir la atención."
+        ),
+        "disclaimer_short": (
+            "Solo demo de investigación. No es un dispositivo médico. "
+            "No debe usarse para decisiones clínicas reales."
+        ),
+        "select_stay": "Estancia de paciente demo",
+        "select_stay_info": "Seis ejemplos sintéticos, de más estable a más inestable.",
+        "lang": "Idioma",
+        "sidebar_hint": 'Cambie de idioma cuando quiera. Toda la página lo sigue.',
+        "sidebar_guide": 'Elija una estancia demo y luego lea el riesgo y los vitales que lo movieron. Ética y métricas son profundidad opcional.',
+        "reset_view": 'Restablecer a la estancia predeterminada',
+        "source": 'Fuente de datos',
+        "source_synthetic": 'Demo sintética (pública)',
+        "source_mimic": 'MIMIC-III (acceso con credenciales)',
+        "source_note_synthetic": 'Esta demo usa signos vitales horarios sintéticos en `data/sample/`. No se necesita cuenta de PhysioNet.',
+        "source_note_mimic": 'MIMIC-III requiere una cuenta de PhysioNet y un DUA. Vea `docs/mimic_access.md`. La interfaz pública se mantiene con datos sintéticos.',
+        "sidebar_about": 'Acerca de esta demo',
+        "run": "Estimar riesgo",
+        "retry": "Intentar de nuevo",
+        "reset": "Restablecer",
+        "run_hint": "Consejo: cambiar la estancia de arriba actualiza la estimación por sí sola.",
+        "status_idle": "Elija una estancia para comenzar.",
+        "status_loading": "Revisando las últimas 48 horas de signos vitales…",
+        "status_done": "Estimación lista para esta estancia.",
+        "status_error": (
+            "Algo salió mal. Elija otra estancia o toque Intentar de nuevo. "
+            "Si sigue fallando, vuelva a ejecutar el entrenamiento desde el README."
+        ),
+        "empty_stay": "Elija una estancia demo arriba para ver una estimación de riesgo.",
+        "risk_heading": "Probabilidad de morir dentro de 48 horas",
+        "risk_explain_high": (
+            "Entre patrones de signos vitales similares en este conjunto de datos demo, "
+            "el modelo ubica esta estancia en el grupo de mayor riesgo. Un clínico "
+            "igual consideraría el diagnóstico, los tratamientos y los objetivos de cuidado."
+        ),
+        "risk_explain_mid": (
+            "El modelo ve un patrón intermedio en los vitales. Trate esto como un "
+            "punto de partida para la conversación, no como una predicción de lo que ocurrirá."
+        ),
+        "risk_explain_low": (
+            "El modelo ve un patrón de signos vitales más estable respecto a esta demo. "
+            "Un riesgo estimado bajo no significa que el paciente no pueda empeorar."
+        ),
+        "drivers_heading": "Qué vitales movieron esta puntuación",
+        "drivers_lede": (
+            "Estas son las principales pistas del modelo de las últimas 6, 24 o 48 horas. "
+            "Explican la puntuación, no la biología de la muerte."
+        ),
+        "drivers_empty": "Ningún vital individual destacó para esta estancia.",
+        "heatmap": "Influencia por vital y ventana de tiempo",
+        "heatmap_legend": (
+            "Las celdas más cálidas aumentaron el riesgo. Las más frías lo redujeron. "
+            "Cada fila es un signo vital."
+        ),
+        "trajectory": "Signos vitales a lo largo de 48 horas",
+        "trajectory_lede": (
+            "El área sombreada marca las 6 horas más recientes, cuando esa ventana importó más."
+        ),
+        "ethics_heading": "Cómo leer este número",
+        "metrics_heading": "Verificación del modelo (datos sintéticos)",
+        "metrics_lede": (
+            "Estas puntuaciones provienen de datos demo sintéticos y pueden parecer "
+            "irrealmente fuertes. En datos reales de MIMIC-III, los modelos basados solo "
+            "en vitales suelen situarse cerca de un AUROC de 0.75 a 0.85."
+        ),
+        "metrics_missing": (
+            "Falta el archivo de métricas. Desde la carpeta del proyecto ejecute: "
+            "`python -m scripts.train_baseline`."
+        ),
+        "calibration": "Calibración en la partición sintética reservada",
+        "calibration_alt": (
+            "¿Una puntuación del 20% significa que cerca del 20% de estancias similares "
+            "tuvieron el evento? Este gráfico lo comprueba con datos demo."
+        ),
+        "charts_heading": "Gráficos",
+        "plot_hour_axis": "Hora (0 = más antigua → derecha = más reciente)",
+        "plot_lookback_axis": "Ventana retrospectiva hasta el momento de la predicción",
+        "plot_shap_colorbar": "SHAP → probabilidad de muerte",
+        "plot_cal_perfect": "Calibración perfecta",
+        "plot_cal_model": "Modelo",
+        "plot_cal_xlabel": "Probabilidad media predicha",
+        "plot_cal_ylabel": "Fracción de mortalidad observada",
+        "label_demo_0": "Vitales más estables (demo)",
+        "label_demo_1": "Ventana tardía inestable (demo)",
+        "label_hidden_note": "En una UCI real, el desenlace verdadero permanecería oculto.",
+        "raised_risk": "aumentó el riesgo",
+        "lowered_risk": "redujo el riesgo",
+        "onboarding": "",
+        "band_low": "Riesgo más bajo en este conjunto demo",
+        "band_moderate": "Riesgo moderado en este conjunto demo",
+        "band_elevated": "Riesgo elevado en este conjunto demo",
+        "band_high": "Riesgo más alto en este conjunto demo",
+        "about_pct": "Alrededor de {pct}%. {band}.",
+        "window_phrase": "últimas {window}",
+        "intended_use": (
+            "**Uso previsto:** mostrar cómo una puntuación y una explicación por ventana "
+            "de tiempo pueden *apoyar* el razonamiento clínico, nunca reemplazarlo. "
+            "**No es para:** triaje, racionamiento, decisiones de final de vida, ni uso como dispositivo médico."
+        ),
+        "uncertainty_1": (
+            "La calibración proviene de datos de desarrollo. "
+            "Puede variar en otro hospital."
+        ),
+        "uncertainty_2": (
+            "Los vitales por sí solos omiten diagnósticos, tratamientos y objetivos de cuidado."
+        ),
+        "uncertainty_3": (
+            "Una puntuación alta no justifica retirar la atención. "
+            "Una puntuación baja no descarta un empeoramiento."
+        ),
+        "uncertainty_4": (
+            "La explicación del modelo (SHAP) describe el cálculo, no la causa biológica."
+        ),
+    },
+    "ar": {
+        "eyebrow": "عرض تجريبي لمحفظة أعمال في أدوار علم البيانات السريرية",
+        "title": "هل سينجو هذا المريض في العناية المركزة خلال الـ48 ساعة القادمة؟",
+        "subtitle": (
+            "تقدّر هذه الأداة هذا الاحتمال بناءً على معدل ضربات القلب وضغط الدم "
+            "ومعدل التنفس ومستوى الأكسجين ودرجة الحرارة خلال اليومين الماضيين."
+        ),
+        "what_it_shows": (
+            "<strong>ما ستحصل عليه:</strong> نسبة خطر مئوية، ثم قائمة قصيرة بالعلامات "
+            "الحيوية والنوافذ الزمنية الأكثر تأثيرًا في النتيجة. استخدمها لطرح أسئلة "
+            "أفضل، لا لاتخاذ قرارات الرعاية."
+        ),
+        "disclaimer_short": (
+            "عرض بحثي فقط. ليس جهازًا طبيًا. لا يُستخدم لاتخاذ قرارات سريرية حقيقية."
+        ),
+        "select_stay": "إقامة مريض تجريبية",
+        "select_stay_info": "ستة أمثلة اصطناعية، من الأكثر استقرارًا إلى الأقل استقرارًا.",
+        "lang": "اللغة",
+        "sidebar_hint": 'يمكنك تغيير اللغة في أي وقت. تتبع الصفحة بأكملها هذا التغيير.',
+        "sidebar_guide": 'اختر إقامة تجريبية، ثم اقرأ الخطر والعلامات الحيوية التي حرّكته. الأخلاقيات والمقاييس عمق اختياري.',
+        "reset_view": 'إعادة الضبط إلى الإقامة الافتراضية',
+        "source": 'مصدر البيانات',
+        "source_synthetic": 'بيانات اصطناعية تجريبية (عامة)',
+        "source_mimic": 'MIMIC-III (مسار يتطلب اعتمادًا)',
+        "source_note_synthetic": 'يعمل هذا العرض على علامات حيوية اصطناعية بالساعة في `data/sample/`. لا حاجة لتسجيل دخول PhysioNet.',
+        "source_note_mimic": 'يتطلب MIMIC-III حساب PhysioNet واتفاقية استخدام بيانات (DUA). راجع `docs/mimic_access.md`. تبقى الواجهة العامة على البيانات الاصطناعية.',
+        "sidebar_about": 'حول هذا العرض',
+        "run": "تقدير الخطر",
+        "retry": "إعادة المحاولة",
+        "reset": "إعادة الضبط",
+        "run_hint": "نصيحة: تغيير الإقامة أعلاه يحدّث التقدير تلقائيًا.",
+        "status_idle": "اختر إقامة للبدء.",
+        "status_loading": "جارٍ مراجعة العلامات الحيوية خلال الـ48 ساعة الماضية…",
+        "status_done": "التقدير جاهز لهذه الإقامة.",
+        "status_error": (
+            "حدث خطأ ما. اختر إقامة أخرى أو اضغط على إعادة المحاولة. "
+            "إذا استمر الفشل، أعد تشغيل التدريب من ملف README."
+        ),
+        "empty_stay": "اختر إقامة تجريبية أعلاه لرؤية تقدير الخطر.",
+        "risk_heading": "احتمال الوفاة خلال 48 ساعة",
+        "risk_explain_high": (
+            "بين أنماط العلامات الحيوية المشابهة في مجموعة البيانات التجريبية هذه، "
+            "يضع النموذج هذه الإقامة في مجموعة الخطر الأعلى. سيظل الطبيب السريري "
+            "يزن التشخيص والعلاجات وأهداف الرعاية."
+        ),
+        "risk_explain_mid": (
+            "يرى النموذج نمطًا متوسطًا في العلامات الحيوية. اعتبر هذا نقطة بداية "
+            "للنقاش، لا تنبؤًا بما سيحدث."
+        ),
+        "risk_explain_low": (
+            "يرى النموذج نمطًا أكثر هدوءًا في العلامات الحيوية مقارنة بهذا العرض. "
+            "لا يعني الخطر المقدَّر المنخفض أن حالة المريض لن تتدهور."
+        ),
+        "drivers_heading": "العلامات الحيوية التي حرّكت هذه النتيجة",
+        "drivers_lede": (
+            "هذه هي أهم أدلة النموذج من الساعات الـ6 أو 24 أو 48 الأخيرة. "
+            "إنها تفسّر النتيجة، لا بيولوجيا الوفاة."
+        ),
+        "drivers_empty": "لم تبرز أي علامة حيوية بمفردها لهذه الإقامة.",
+        "heatmap": "التأثير حسب العلامة الحيوية والنافذة الزمنية",
+        "heatmap_legend": (
+            "الخلايا الأكثر دفئًا رفعت الخطر. الخلايا الأكثر برودة خفّضته. "
+            "كل صف يمثل علامة حيوية واحدة."
+        ),
+        "trajectory": "العلامات الحيوية خلال 48 ساعة",
+        "trajectory_lede": (
+            "تشير المنطقة المظللة إلى الساعات الست الأخيرة عندما كانت تلك النافذة الأكثر أهمية."
+        ),
+        "ethics_heading": "كيفية قراءة هذا الرقم",
+        "metrics_heading": "فحص النموذج (بيانات اصطناعية)",
+        "metrics_lede": (
+            "تأتي هذه المقاييس من بيانات تجريبية اصطناعية وقد تبدو قوية بشكل غير واقعي. "
+            "في بيانات MIMIC-III الحقيقية، غالبًا ما تقترب النماذج المعتمدة على العلامات "
+            "الحيوية فقط من AUROC يتراوح بين 0.75 و0.85."
+        ),
+        "metrics_missing": (
+            "ملف المقاييس غير موجود. من مجلد المشروع، شغّل: "
+            "`python -m scripts.train_baseline`."
+        ),
+        "calibration": "المعايرة على التقسيم الاصطناعي المحجوز",
+        "calibration_alt": (
+            "هل تعني نتيجة 20% أن نحو 20% من الإقامات المشابهة شهدت الحدث؟ "
+            "يتحقق هذا الرسم البياني من ذلك على بيانات العرض التجريبي."
+        ),
+        "charts_heading": "الرسوم البيانية",
+        "plot_hour_axis": "الساعة (0 يعني الأقدم، واليمين يعني الأحدث)",
+        "plot_lookback_axis": "نافذة الاستعراض الرجعي حتى لحظة التنبؤ",
+        "plot_shap_colorbar": "SHAP مقابل احتمال الوفاة",
+        "plot_cal_perfect": "معايرة مثالية",
+        "plot_cal_model": "النموذج",
+        "plot_cal_xlabel": "متوسط الاحتمال المتوقَّع",
+        "plot_cal_ylabel": "نسبة الوفيات المُلاحَظة",
+        "label_demo_0": "علامات حيوية أكثر استقرارًا (عرض تجريبي)",
+        "label_demo_1": "نافذة متأخرة غير مستقرة (عرض تجريبي)",
+        "label_hidden_note": "في وحدة عناية مركزة حقيقية، ستبقى النتيجة الفعلية مخفية.",
+        "raised_risk": "رفع الخطر",
+        "lowered_risk": "خفّض الخطر",
+        "onboarding": "",
+        "band_low": "خطر أقل ضمن مجموعة العرض التجريبي هذه",
+        "band_moderate": "خطر متوسط ضمن مجموعة العرض التجريبي هذه",
+        "band_elevated": "خطر مرتفع ضمن مجموعة العرض التجريبي هذه",
+        "band_high": "خطر أعلى ضمن مجموعة العرض التجريبي هذه",
+        "about_pct": "نحو {pct}%. {band}.",
+        "window_phrase": "آخر {window}",
+        "intended_use": (
+            "**الاستخدام المقصود:** إظهار كيف يمكن لنتيجة وتفسير قائم على نافذة زمنية "
+            "أن *يدعما* التفكير السريري، لا أن يحلّا محله أبدًا. "
+            "**لا يُستخدم لـ:** الفرز، ترشيد الموارد، قرارات نهاية الحياة، أو كجهاز طبي."
+        ),
+        "uncertainty_1": (
+            "تأتي المعايرة من بيانات التطوير. قد تنحرف في مستشفى آخر."
+        ),
+        "uncertainty_2": (
+            "العلامات الحيوية وحدها تُغفل التشخيص والعلاجات وأهداف الرعاية."
+        ),
+        "uncertainty_3": (
+            "لا تبرر النتيجة المرتفعة سحب الرعاية. ولا تستبعد النتيجة المنخفضة تدهور الحالة."
+        ),
+        "uncertainty_4": (
+            "تفسير النموذج (SHAP) يصف الحساب، لا السبب البيولوجي."
+        ),
+    },
     "zh": {
         "eyebrow": "面向临床数据科学岗位的作品集演示",
         "title": "这名重症患者能否度过接下来的 48 小时？",
@@ -870,6 +1120,10 @@ def normalize_lang(lang: str | None) -> str:
         return "pt"
     if raw in {"ru", "ru-ru", "russian", "русский"}:
         return "ru"
+    if raw in {"es", "es-es", "es-mx", "es-ar", "spanish", "español", "espanol"}:
+        return "es"
+    if raw in {"ar", "ar-sa", "ar-eg", "arabic", "العربية", "عربي"}:
+        return "ar"
     code = raw[:2]
     if code in SUPPORTED_LANGS:
         return code
