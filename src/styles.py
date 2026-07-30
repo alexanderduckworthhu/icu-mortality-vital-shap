@@ -560,28 +560,21 @@ html[dir="rtl"] .icu-risk-explain {{
 
 
 def apply_direction(lang: str) -> None:
-    """Set the document `dir`/`lang` attributes so Arabic renders right-to-left.
-
-    Runs inside a zero-size embedded iframe and reaches into the parent
-    document, since Streamlit's own DOM has no attribute hook for this.
-    """
-    import streamlit.components.v1 as components
-
+    """Apply RTL/LTR direction via CSS (Cloud-safe; no components.v1.html)."""
     direction = "rtl" if lang == "ar" else "ltr"
-    components.html(
+    st.markdown(
         f"""
-        <script>
-        (function() {{
-          try {{
-            const doc = window.parent.document;
-            doc.documentElement.setAttribute('dir', '{direction}');
-            doc.documentElement.setAttribute('lang', '{lang}');
-          }} catch (e) {{}}
-        }})();
-        </script>
+        <style>
+          html, body,
+          [data-testid="stAppViewContainer"],
+          [data-testid="stSidebar"],
+          [data-testid="stSidebarContent"],
+          section.main, .block-container {{
+            direction: {direction};
+          }}
+        </style>
         """,
-        height=0,
-        width=0,
+        unsafe_allow_html=True,
     )
 
 
