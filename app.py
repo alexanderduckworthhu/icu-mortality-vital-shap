@@ -50,7 +50,7 @@ from src.ui_format import (
 logger = logging.getLogger(__name__)
 
 # Bump when plot/CSS chrome changes so cached session figures are discarded.
-UI_STYLE_VERSION = "green-v3-distinct-vitals"
+UI_STYLE_VERSION = "green-v4-selectbox"
 
 DemoBundle = tuple[
     TrainedBaseline,

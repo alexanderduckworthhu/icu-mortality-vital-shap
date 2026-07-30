@@ -253,7 +253,6 @@ def format_hero_html(lang: str = "en") -> str:
     """
     return (
         f'<div class="icu-hero">'
-        f'<div class="icu-eyebrow">{t("eyebrow", lang)}</div>'
         f'<div class="icu-title" role="heading" aria-level="1">{t("title", lang)}</div>'
         f'<p class="icu-lede">{t("subtitle", lang)}</p>'
         f'<div class="icu-what">{t("what_it_shows", lang)}</div>'

@@ -516,6 +516,43 @@ button[kind="secondary"],
 }}
 .icu-chip {{ background: #e8f2ec !important; color: #0d3d28 !important; }}
 
+/* Demo-patient select: readable text + visible border (avoid white-on-white) */
+div[data-testid="stSelectbox"] label p {{
+  color: #0a0a0a !important;
+  font-weight: 600 !important;
+}}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
+  background-color: #ffffff !important;
+  border: 1.5px solid #0d3d28 !important;
+  border-radius: 8px !important;
+  color: #0a0a0a !important;
+  min-height: 44px !important;
+  box-shadow: none !important;
+}}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover {{
+  border-color: #1a5c3a !important;
+}}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] span,
+div[data-testid="stSelectbox"] div[data-baseweb="select"] svg {{
+  color: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}}
+ul[role="listbox"],
+div[data-baseweb="popover"] ul,
+div[data-baseweb="menu"] {{
+  background-color: #ffffff !important;
+  border: 1px solid #d0d0d0 !important;
+}}
+ul[role="listbox"] li,
+div[data-baseweb="menu"] li {{
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+}}
+ul[role="listbox"] li:hover,
+div[data-baseweb="menu"] li:hover {{
+  background-color: #e8f2ec !important;
+}}
+
 /* Arabic RTL: mirror text flow and list/legend indents; charts stay LTR images */
 html[dir="rtl"] body,
 html[dir="rtl"] .stApp,
