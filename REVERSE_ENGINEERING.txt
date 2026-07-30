@@ -4,7 +4,7 @@ ICU MORTALITY · VITALS + SHAP: REVERSE ENGINEERING GUIDE
 Purpose: Teach yourself how this portfolio project works by walking backward
 from the Gradio risk screen to raw vital-sign rows. Read with the code open.
 
-Audience: You (career-changer / INFJ who needs the WHY). Not for hiring managers
+Audience: You (the builder who needs the WHY). Not for hiring managers
 ,  they get the README and docs/talking_points.md.
 
 Sibling projects: where-needs-overlap and multilingual-rag-assistant are
@@ -20,7 +20,7 @@ Question the whole app answers:
    48-hour mortality risk, and which vital-sign windows drove that estimate?"
 
 If a feature does not improve honest risk estimation, attribution, calibration,
-or uncertainty communication, it does not belong. That filter stops INFJ
+or uncertainty communication, it does not belong. That filter stops scope
 overbuilding (no premature LSTM, no fake precision, no "AI doctor" chrome).
 
 
@@ -126,7 +126,7 @@ app.py
 
 docs/mimic_access.md    . PhysioNet + tables/columns
 docs/methods.md         , preprocess, model rationale, “what good looks like”
-docs/ethics_uncertainty.md, the INFJ differentiator for interviews
+docs/ethics_uncertainty.md, the ethics differentiator for stakeholder reviews
 docs/portfolio_writeup.md , how to describe this without cringe
 docs/talking_points.md    , 90-second oral version
 docs/limitations.md       , intellectual honesty

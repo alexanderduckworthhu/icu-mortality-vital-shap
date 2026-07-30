@@ -1,6 +1,6 @@
 # ICU 48-hour mortality risk from vital signs, with window attribution
 
-A Streamlit portfolio demo for clinical data science candidates in Geneva and Basel:
+A Streamlit portfolio demo for clinical data science candidates:
 calibrated 48-hour ICU mortality risk from vital-sign time series, plus SHAP
 attribution showing which vital × lookback windows drove each estimate.
 
@@ -107,7 +107,7 @@ metrics table. Do not publish credentialed rows in a public hosted demo.
 ## What I'd improve next
 
 1. **Patient-level MIMIC-III split with published AUROC / PR-AUC / ECE**, current
-   public metrics are synthetic; Swiss interviewers will ask for real held-out numbers.
+   public metrics are synthetic; reviewers will ask for real held-out numbers before presenting this work.
 2. **Subgroup calibration (sex, age band, CareVue vs Metavision era)**, without it,
    a single ECE hides drift that matters for regulated health settings.
 3. **LSTM only if error analysis shows missed trajectories**, checklist in

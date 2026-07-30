@@ -22,7 +22,7 @@ held-out patient-level splits; today the live demo is synthetic so anyone can
 run it without PhysioNet access.”
 
 ## Close (10s)
-“I’m targeting clinical data science in Geneva and Basel. I want teams that
+“I care about teams that
 care whether a number deserves to be shown, not only whether it ranks well.”
 
 ## If asked “why not deep learning?”

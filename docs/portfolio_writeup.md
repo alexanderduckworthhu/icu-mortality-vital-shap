@@ -23,7 +23,7 @@ pipeline is designed to accept MIMIC-III after PhysioNet credentialing.
 - Designed a 48h ICU mortality risk pipeline (vitals → calibrated logistic →
   SHAP window heatmap) with explicit missingness handling, AUROC/PR-AUC/ECE
   reporting, and clinician-facing uncertainty language; Gradio demo + MIMIC-III
-  access path documented for Geneva/Basel clinical data science roles.
+  access path documented for credentialed evaluation.
 
 ## Section order employers actually finish
 
@@ -45,10 +45,10 @@ pipeline is designed to accept MIMIC-III after PhysioNet credentialing.
 | Portfolio demo / research | Deployed in hospitals |
 | Limitations documented | State-of-the-art claim |
 
-## Tie to Swiss targets (light touch)
+## Tie to industry context (light touch)
 
-- **Unilabs / diagnostics-adjacent teams:** data quality, missingness, audit trails.  
-- **Roche digital health:** calibration, explainability, responsible CDS framing.  
+- **Diagnostics-adjacent teams:** data quality, missingness, audit trails.  
+- **Digital health / pharma:** calibration, explainability, responsible CDS framing.  
 - **Startups:** shipping a thin vertical slice (demo + metrics + ethics) beats
   an unfinished deep learning thesis.
 

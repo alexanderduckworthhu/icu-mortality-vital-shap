@@ -1,7 +1,7 @@
 # Ethics & uncertainty when showing a mortality estimate
 
 You are not shipping a gadget. You are rehearsing how to speak about death
-risk with humility. That is a feature for Geneva / Basel interviews, labs
+risk with humility. That is a feature for clinical data science stakeholders, labs
 and digital-health teams are rightly wary of overconfident ML.
 
 ## The moral object
@@ -26,7 +26,7 @@ Implemented in `src/ethics/framing.py` and the Gradio UI:
 4. **Hard disclaimer**, research/portfolio only; not a medical device.  
 5. **Coarse bands**, avoid fake precision (0.1% displays).
 
-## Interview-ready talking points (INFJ-aligned)
+## Stakeholder-ready talking points
 
 - *“I care less about winning a Kaggle metric than about whether a number
   deserves to be shown.”*  
@@ -45,7 +45,7 @@ Implemented in `src/ethics/framing.py` and the Gradio UI:
 | Missingness flags | Don’t erase the charting process |
 | Isotonic calibration | Respect probability-as-frequency |
 | Synthetic public demo | Honor MIMIC DUA; no credentialed rows in public UI |
-| EN/FR copy | Meet Swiss bilingual workplace reality |
+| EN/FR copy | Meet bilingual workplace reality |
 
 ## What not to do in screenshots / blogs
 
