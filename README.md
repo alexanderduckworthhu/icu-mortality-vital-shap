@@ -6,7 +6,7 @@ attribution showing which vital × lookback windows drove each estimate.
 
 | | |
 |---|---|
-| **Live demo** | _Add Hugging Face Spaces URL after deploy_ |
+| **Live demo** | https://icu-mortality-vital-shap.streamlit.app/ |
 | **Status** | Portfolio research demo, **not** a medical device |
 | **Public data** | Synthetic vitals in `data/sample/` (no PhysioNet login required) |
 | **Credentialed path** | MIMIC-III after PhysioNet DUA, `docs/mimic_access.md` |
@@ -50,9 +50,9 @@ Current numbers are from the **synthetic** demo cohort after
 
 | Metric | Value | Cohort |
 |--------|------:|--------|
-| AUROC | see `demo_metrics.json` | synthetic held-out (`n_test` in file) |
-| PR-AUC | see `demo_metrics.json` | synthetic |
-| ECE | see `demo_metrics.json` | synthetic |
+| AUROC | 1.000 | synthetic held-out (n=40) |
+| PR-AUC | 1.000 | synthetic |
+| ECE | 0.000 | synthetic |
 
 Treat near-ceiling synthetic AUROC as a **pipeline check**, not clinical
 performance. After PhysioNet access, replace this table with MIMIC-III
